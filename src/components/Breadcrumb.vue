@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-interface BreadcrumbItem {
+export interface BreadcrumbItem {
   name: string
-  link?: string
+  link?: string | null
 }
 
 defineProps<{

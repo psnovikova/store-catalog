@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import type { BreadcrumbItem } from '../components/Breadcrumb.vue'
+import type { Option } from '../types'
 import { computed, ref } from 'vue'
 import items from '../assets/data/items.json'
 import materials from '../assets/data/materials.json'
@@ -6,7 +8,7 @@ import Breadcrumb from '../components/Breadcrumb.vue'
 import DropdownFilter from '../components/DropdownFilter.vue'
 import ProductCard from './components/ProductCard.vue'
 
-const breadcrumbItems = ref([
+const breadcrumbItems = ref<BreadcrumbItem[]>([
   { name: 'Главная', link: '/' },
   { name: 'Системы хранения', link: '/storage-systems' },
   { name: 'Комплекты стеллажных систем', link: null },
@@ -14,7 +16,7 @@ const breadcrumbItems = ref([
 
 const sortingOptions = ref(['Цена по возрастанию', 'Цена по убыванию'])
 const selectedSorting = ref(sortingOptions.value[0])
-const selectedMaterial = ref(null)
+const selectedMaterial = ref<Option>()
 
 const filteredItems = computed(() => {
   let sortedItems = [...items]
@@ -27,7 +29,7 @@ const filteredItems = computed(() => {
   }
 
   if (selectedMaterial.value) {
-    sortedItems = sortedItems.filter(item => item.material === Number(selectedMaterial.value.id))
+    sortedItems = sortedItems.filter(item => item.material === Number(selectedMaterial.value?.id))
   }
 
   return sortedItems

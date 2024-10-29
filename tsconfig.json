@@ -1,7 +1,19 @@
 {
+  "compilerOptions": {
+    "target": "esnext",
+    "jsx": "preserve",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "types": ["vuex"],
+    "strict": true,
+    "importHelpers": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  },
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
   ],
-  "files": []
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }
